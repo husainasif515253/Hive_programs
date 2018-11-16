@@ -1,0 +1,12 @@
+ADD JAR /usr/lib/hive/lib/zookeeper.jar;
+ADD JAR /usr/lib/hive/lib/hive-hbase-handler.jar;
+ADD JAR /usr/lib/hive/lib/guava-11.0.2.jar;
+ADD JAR /usr/lib/hive/lib/hbase-client.jar;
+ADD JAR /usr/lib/hive/lib/hbase-common.jar;
+ADD JAR /usr/lib/hive/lib/hbase-hadoop-compat.jar;
+ADD JAR /usr/lib/hive/lib/hbase-hadoop2-compat.jar;
+ADD JAR /usr/lib/hive/lib/hbase-protocol.jar;
+ADD JAR /usr/lib/hive/lib/hbase-server.jar;
+ADD JAR /usr/lib/hive/lib/htrace-core.jar;
+
+create external table customers2(customerNumber int, customerName string, contactLastName string, contactFirstName string, phone string,addressLine1 string, addressLine2 string,city string,state string,postalCode string, country string, salesRepEmployeeNumber int, creditLimit string) stored by 'org.apache.hadoop.hive.hbase.HBaseStorageHandler' with serdeproperties ("hbase.columns.mapping" = ":key,cf1:customerName,cf1:contactLastName,cf1:contactFirstName,cf1:phone,cf1:addressLine1,cf1:addressLine2,cf1:city,cf1:state,cf1:postalCode,cf1:country,cf1:salesRepEmployeeNumber,cf1:creditLimit") tblproperties ("hbase.table.name" = "customers");

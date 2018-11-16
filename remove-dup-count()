@@ -1,0 +1,1 @@
+select count(*) as cnt,customerNumber from orders group by customerNumber having cnt > 1;

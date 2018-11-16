@@ -1,0 +1,1 @@
+select employeenumber, rank() over() from employees limit 20;
